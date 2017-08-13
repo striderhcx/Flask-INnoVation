@@ -5,6 +5,9 @@ from flask_moment import Moment
 from flask_login import LoginManager
 from config import config
 from flask_pagedown import PageDown
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 bootstrap = Bootstrap()
 mail = Mail()

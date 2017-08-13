@@ -1,10 +1,10 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
-from flask_login import UserMixin, AnonymousUserMixin, redirect, url_for, current_user
+from flask_login import UserMixin, AnonymousUserMixin, current_user
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from flask import current_app
+from flask import current_app, redirect, url_for
 from datetime import datetime
 from markdown import markdown
 import bleach

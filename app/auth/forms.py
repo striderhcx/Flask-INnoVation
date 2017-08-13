@@ -1,4 +1,5 @@
-from flask_wtf import Form
+#coding=utf-8
+from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
@@ -12,7 +13,7 @@ Province_choice = [('北京市', '北京市'), ('天津市', '天津市'), ('上
                    ('西藏', '西藏'), ('新疆', '新疆'), ('宁夏', '宁夏'), ('澳门', '澳门'), ('香港', '香港')]
 
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     email = StringField('登录邮箱', validators=[Required(), Length(1, 64),
                                             Email()])
     password = PasswordField('密码', validators=[Required()])
@@ -20,7 +21,7 @@ class LoginForm(Form):
     submit = SubmitField('登录')
 
 
-class RegistrationForm(Form):
+class RegistrationForm(FlaskForm):
     email = StringField('邮箱', validators=[Required(), Length(1, 64),
                                           Email()])
     username = StringField('用户名', validators=[
@@ -45,7 +46,7 @@ class RegistrationForm(Form):
             raise ValidationError('用户名已被注册.')
 
 
-class PasswordResetRequestForm(Form):
+class PasswordResetRequestForm(FlaskForm):
     email = StringField('邮箱地址', validators=[Required(), Length(1, 64),
                                             Email()])
     submit = SubmitField('提交')
@@ -55,14 +56,14 @@ class PasswordResetRequestForm(Form):
             raise ValidationError('邮箱不存在,请重新确认')
 
 
-class PasswordResetForm(Form):
+class PasswordResetForm(FlaskForm):
     password = PasswordField('密码', validators=[
         Required(), EqualTo('password2', message='两次密码不一致.')])
     password2 = PasswordField('确认密码', validators=[Required()])
     submit = SubmitField('修改')
 
 
-class ChangePasswordForm(Form):
+class ChangePasswordForm(FlaskForm):
     old_password = PasswordField('旧密码', validators=[Required()])
     password = PasswordField('新密码', validators=[
         Required(), EqualTo('password2', message='两次密码不一致.')])
@@ -70,7 +71,7 @@ class ChangePasswordForm(Form):
     submit = SubmitField('修改')
 
 
-class ChangeEmailForm(Form):
+class ChangeEmailForm(FlaskForm):
     email = StringField('新邮箱地址', validators=[Required(), Length(1, 64),
                                              Email()])
     submit = SubmitField('修改')

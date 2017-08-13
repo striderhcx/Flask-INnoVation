@@ -1,8 +1,9 @@
-from flask import render_template, abort, flash, request, current_app, make_response
+#coding=utf-8
+from flask import render_template, abort, flash, request, current_app, make_response, redirect, url_for
 from . import main
 from pymongo import MongoClient, DESCENDING
 from ..models import Temp, Permission, Post, body_html
-from flask_login import login_required, current_user, redirect, url_for
+from flask_login import login_required, current_user
 from .forms import EditProfileForm, EditProfileAdminForm, PostForm, EditPostForm, CommentForm
 from ..decorators import admin_required, permission_required
 from bson.objectid import ObjectId
